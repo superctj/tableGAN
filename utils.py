@@ -402,7 +402,7 @@ def generate_data(sess, model, config, option):
         origin_data_path = model.train_data_path  # './data/'+ config.dataset+ '/train_'+ config.dataset + '_cleaned'
 
         if os.path.exists(origin_data_path + ".csv"):
-            origin_data = pd.read_csv(origin_data_path + ".csv", sep=';')
+            origin_data = pd.read_csv(origin_data_path + ".csv", sep=',')
 
         elif os.path.exists(origin_data_path + ".pickle"):
             with open(origin_data_path + '.pickle', 'rb') as handle:
@@ -422,7 +422,7 @@ def generate_data(sess, model, config, option):
         # Rounding Data
         round_columns = range(scaled_fake.shape[1])
 
-        round_scaled_fake = rounding(scaled_fake, origin_data.as_matrix(), round_columns)
+        round_scaled_fake = rounding(scaled_fake, origin_data.to_numpy(), round_columns)
 
         # Required for Classification NN evaluation only
         # save_data(round_scaled_fake , save_dir +'/' + config.test_id + "_scaled_fake_tabular.pickle" )
