@@ -429,7 +429,7 @@ def generate_data(sess, model, config, option):
 
         rsf_out = pd.DataFrame(round_scaled_fake)
 
-        rsf_out.to_csv(f'{save_dir}/{config.dataset}_{config.test_id}_fake.csv' , index=False, sep=';')
+        rsf_out.to_csv(f'{save_dir}/{config.dataset}_{config.test_id}_fake.csv' , index=False, sep=',')
 
         print("Generated Data shape = " + str(round_scaled_fake.shape))
 
